@@ -17,7 +17,7 @@
 
 /* Begin PBXFileReference section */
 		02BF84188124B8F0A0C2314C /* Pods_CommonUI_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CommonUI_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		11DED4B37AAFBB8DCD48CB19 /* Pods-CommonUI_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonUI_Example.debug.xcconfig"; path = "Target Support Files/Pods-CommonUI_Example/Pods-CommonUI_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		11DED4B37AAFBB8DCD48CB19 /* Pods-CommonUI_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonUI_Example.debug.xcconfig"; path = "../../../../Pods/Target Support Files/Pods-CommonUI_Example/Pods-CommonUI_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		47EBC3CB4C886970AC830BB6 /* Pods-CommonUI_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonUI_Tests.debug.xcconfig"; path = "Target Support Files/Pods-CommonUI_Tests/Pods-CommonUI_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* CommonUI_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CommonUI_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -34,7 +34,7 @@
 		CAEA7DD7C88B6A2F0725372D /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		F09725BD2912E95D000019D9 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
 		F09725BE2912E95E000019D9 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		F71EED3CAD83B6B59B402577 /* Pods-CommonUI_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonUI_Example.release.xcconfig"; path = "Target Support Files/Pods-CommonUI_Example/Pods-CommonUI_Example.release.xcconfig"; sourceTree = "<group>"; };
+		F71EED3CAD83B6B59B402577 /* Pods-CommonUI_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonUI_Example.release.xcconfig"; path = "../../../../Pods/Target Support Files/Pods-CommonUI_Example/Pods-CommonUI_Example.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,7 +148,7 @@
 				607FACCC1AFB9204008FA782 /* Sources */,
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
-				773334CB6A2A280BAF921BE4 /* [CP] Embed Pods Frameworks */,
+				EA0B7D5FE2AE440FB0200683 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -231,7 +231,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		773334CB6A2A280BAF921BE4 /* [CP] Embed Pods Frameworks */ = {
+		EA0B7D5FE2AE440FB0200683 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -239,10 +239,12 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-CommonUI_Example/Pods-CommonUI_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/CommonUI/CommonUI.framework",
+				"${BUILT_PRODUCTS_DIR}/Resources/Resources.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CommonUI.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Resources.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

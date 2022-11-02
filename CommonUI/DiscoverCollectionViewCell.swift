@@ -23,11 +23,6 @@ open class DiscoverCollectionViewCell: UICollectionViewCell {
         label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         label.textColor = Colors.transparentTitleLabel
         label.layer.zPosition = 1
-        label.layer.shadowColor = UIColor.black.cgColor
-//        label.layer.shadowRadius = 1.2
-//        label.layer.shadowOpacity = 0.8
-//        label.layer.shadowOffset = CGSize(width: 0, height: 0)
-//        label.layer.masksToBounds = false
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

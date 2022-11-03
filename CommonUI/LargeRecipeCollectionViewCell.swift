@@ -37,14 +37,6 @@ public final class LargeRecipeCollectionViewCell: DiscoverCollectionViewCell {
         return label
     }()
     
-    // MARK: - Life Cycle
-    
-    public override func layoutSubviews() {
-        super.layoutSubviews()
-        
-//        setupView()
-    }
-    
     // MARK: - Private Methods
     
     public override func setupView() {

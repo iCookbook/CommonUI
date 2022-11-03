@@ -12,4 +12,5 @@ Pod::Spec.new do |s|
   s.source_files = 'CommonUI/**/*.{swift}'
   
   s.dependency 'Resources'
+  s.dependency 'Models'
 end

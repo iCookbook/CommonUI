@@ -53,4 +53,12 @@ open class DiscoverCollectionViewCell: UICollectionViewCell {
         contentView.layer.cornerRadius = 12
         contentView.layer.masksToBounds = true
     }
+    
+    public func addShadows(to label: UILabel, opacity: Float) {
+        label.layer.shadowColor = UIColor.black.cgColor
+        label.layer.shadowRadius = 1.0
+        label.layer.shadowOpacity = opacity
+        label.layer.shadowOffset = CGSize(width: 0, height: 0)
+        label.layer.masksToBounds = false
+    }
 }

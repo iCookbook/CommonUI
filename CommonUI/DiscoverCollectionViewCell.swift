@@ -12,8 +12,7 @@ open class DiscoverCollectionViewCell: UICollectionViewCell {
     
     public let recipeImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = Images.sampleRecipeImage
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleToFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()

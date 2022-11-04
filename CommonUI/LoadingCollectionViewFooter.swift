@@ -31,11 +31,20 @@ public final class LoadingCollectionViewFooter: UICollectionReusableView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Public Methods
+    
+    public func startActivityIndicator() {
+        activityIndicator.startAnimating()
+    }
+    
+    public func stopActivityIndicator() {
+        activityIndicator.stopAnimating()
+    }
+    
     // MARK: - Private Methods
     
     private func setupView() {
         addSubview(activityIndicator)
-        activityIndicator.startAnimating()
         
         NSLayoutConstraint.activate([
             activityIndicator.centerXAnchor.constraint(equalTo: centerXAnchor),

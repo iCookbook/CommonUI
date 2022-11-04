@@ -7,12 +7,13 @@
 
 import UIKit
 
-final class LoadingCollectionViewFooter: UICollectionReusableView {
+public final class LoadingCollectionViewFooter: UICollectionReusableView {
     
     // MARK: - Private Properties
     
     private let activityIndicator: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.color = .gray
         activityIndicator.hidesWhenStopped = true
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         return activityIndicator
@@ -34,6 +35,7 @@ final class LoadingCollectionViewFooter: UICollectionReusableView {
     
     private func setupView() {
         addSubview(activityIndicator)
+        activityIndicator.startAnimating()
         
         NSLayoutConstraint.activate([
             activityIndicator.centerXAnchor.constraint(equalTo: centerXAnchor),

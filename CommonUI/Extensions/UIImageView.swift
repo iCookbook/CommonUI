@@ -11,7 +11,13 @@ import Networking
 
 extension UIImageView {
     public func loadImage(for urlString: String?) {
-        NetworkManager.obtainData(by: urlString ?? "") { [weak self] (result) in
+        
+        guard let urlString = urlString else {
+            self.image = Images.sampleRecipeImage
+            return
+        }
+        
+        NetworkManager.obtainData(by: urlString) { [weak self] (result) in
             switch result {
             case .success(let data):
                 DispatchQueue.main.async {

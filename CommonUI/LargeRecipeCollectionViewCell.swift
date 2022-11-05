@@ -21,15 +21,6 @@ public final class LargeRecipeCollectionViewCell: DiscoverCollectionViewCell {
         return blurEffectView
     }()
     
-//    private let recipesDescriptionLabel: UILabel = {
-//        let label = UILabel()
-//        label.font = UIFont.systemFont(ofSize: 16)
-//        label.textColor = .white
-//        label.layer.zPosition = 1
-//        label.translatesAutoresizingMaskIntoConstraints = false
-//        return label
-//    }()
-    
     private let dishOfTheDayLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 48, weight: .black)

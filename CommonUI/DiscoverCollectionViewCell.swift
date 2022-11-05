@@ -12,7 +12,6 @@ open class DiscoverCollectionViewCell: UICollectionViewCell {
     
     public let recipeImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleToFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -29,7 +28,7 @@ open class DiscoverCollectionViewCell: UICollectionViewCell {
     public let recipeSubtitleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
-        label.textColor = Colors.secondaryLabel
+        label.textColor = Colors.lightSecondaryLabel
         label.numberOfLines = 2
         label.layer.zPosition = 1
         label.translatesAutoresizingMaskIntoConstraints = false

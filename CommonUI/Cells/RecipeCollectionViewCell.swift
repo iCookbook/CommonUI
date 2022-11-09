@@ -15,7 +15,7 @@ public final class RecipeCollectionViewCell: DiscoverCollectionViewCell {
     
     private let recipeTertiaryLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16)
+        label.font = Fonts.systemBody()
         label.textColor = .white
         label.numberOfLines = 2
         label.layer.zPosition = 1

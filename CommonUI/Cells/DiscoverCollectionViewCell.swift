@@ -18,7 +18,7 @@ open class DiscoverCollectionViewCell: UICollectionViewCell {
     
     public let recipeTitleLabel: UILabel = {
         let label = UILabel()
-        label.font = Fonts.headline()
+        label.font = Fonts.title()
         label.textColor = Colors.transparentTitleLabel
         label.layer.zPosition = 1
         label.translatesAutoresizingMaskIntoConstraints = false

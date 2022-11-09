@@ -16,7 +16,7 @@ public final class TitleLabel: UILabel {
         super.init(frame: .zero)
         self.text = text
         
-        font = Fonts.headline()
+        font = Fonts.title()
         translatesAutoresizingMaskIntoConstraints = false
     }
     

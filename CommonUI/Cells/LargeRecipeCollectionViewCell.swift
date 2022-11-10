@@ -84,9 +84,10 @@ public final class LargeRecipeCollectionViewCell: DiscoverCollectionViewCell {
     
     // MARK: - Public Methods
     
-    public func configure(with data: Recipe) {
+    public func configure(with data: Recipe, dishOfTheDayLabelIsHidden: Bool) {
         recipeImageView.loadImage(for: data.images?.regular?.url)
         dishOfTheDayLabel.text = Texts.Discover.dishOfTheDay
+        dishOfTheDayLabel.isHidden = dishOfTheDayLabelIsHidden
         
         recipeTitleLabel.text = data.label
         recipeSubtitleLabel.text = "Bring colour to your dinner table with our \(data.label ?? Texts.Discover.mockRecipeTitle). Packed with nutrients, it's a satisfying lunch or supper for the family"

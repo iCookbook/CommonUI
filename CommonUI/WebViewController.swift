@@ -24,6 +24,7 @@ public final class WebViewController: UIViewController {
     private lazy var toolBar: UIToolbar = {
         let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
         toolBar.items = [backButton, spacer, forwardButton, spacer, shareButton, spacer, safariButton]
+        toolBar.backgroundColor = Colors.systemBackground
         toolBar.translatesAutoresizingMaskIntoConstraints = false
         return toolBar
     }()
@@ -73,6 +74,7 @@ public final class WebViewController: UIViewController {
     }
     
     private func setupView() {
+        view.backgroundColor = Colors.systemBackground
         view.addSubview(webView)
         view.addSubview(toolBar)
         

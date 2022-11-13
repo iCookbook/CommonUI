@@ -10,6 +10,8 @@ import Resources
 
 public final class TitleTableViewHeader: UITableViewHeaderFooterView {
     
+    // MARK: - Private Properties
+    
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = Fonts.title()
@@ -29,22 +31,22 @@ public final class TitleTableViewHeader: UITableViewHeaderFooterView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Public Properties
+    // MARK: - Public Methods
     
     public func configure(title: String) {
         titleLabel.text = title
     }
     
-    // MARK: - Private Properties
+    // MARK: - Private Methods
     
     private func setupView() {
         contentView.backgroundColor = Colors.systemBackground
         contentView.addSubview(titleLabel)
         
         NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor),
-            titleLabel.bottomAnchor.constraint(equalTo: contentView.layoutMarginsGuide.bottomAnchor)
+            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: contentView.layoutMargins.left * 2),
+            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: contentView.layoutMargins.right * 2),
+            titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -contentView.layoutMargins.bottom)
         ])
     }
 }

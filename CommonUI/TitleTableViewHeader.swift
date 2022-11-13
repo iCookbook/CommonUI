@@ -44,7 +44,7 @@ public final class TitleTableViewHeader: UITableViewHeaderFooterView {
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor),
-            titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+            titleLabel.bottomAnchor.constraint(equalTo: contentView.layoutMarginsGuide.bottomAnchor)
         ])
     }
 }

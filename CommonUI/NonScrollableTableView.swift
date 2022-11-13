@@ -21,7 +21,6 @@ public final class NonScrollableTableView: UITableView {
         backgroundColor = .clear
         allowsSelection = false
         isScrollEnabled = false
-        contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
         translatesAutoresizingMaskIntoConstraints = false
     }
     

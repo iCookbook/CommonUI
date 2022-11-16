@@ -14,7 +14,7 @@ public final class LargeRecipeCollectionViewCell: DiscoverCollectionViewCell {
     // MARK: - Private Properties
     
     private let blurEffectView: UIVisualEffectView = {
-        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.light)
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.regular)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.layer.zPosition = 1
         blurEffectView.translatesAutoresizingMaskIntoConstraints = false

@@ -19,7 +19,6 @@ public final class NonScrollableTableView: UITableView {
         super.init(frame: frame, style: style)
         
         backgroundColor = .clear
-        allowsSelection = false
         isScrollEnabled = false
         translatesAutoresizingMaskIntoConstraints = false
     }

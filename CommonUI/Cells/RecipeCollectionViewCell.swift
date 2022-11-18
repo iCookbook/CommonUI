@@ -75,6 +75,6 @@ public final class RecipeCollectionViewCell: DiscoverCollectionViewCell {
         
         let totalTime = data.totalTime != 0.0 ? Int(data.totalTime ?? 50.0) : 50
         let yield = data.yield != 0.0 ? Int(data.yield ?? 4.0) : 4
-        recipeTertiaryLabel.text = "Время приготовления: \(totalTime) минут, количество порций: \(yield)"
+        recipeTertiaryLabel.text = "\(Texts.Discover.cookingTime): \(totalTime) минут, \(Texts.Discover.servingsCount.lowercased()): \(yield)"
     }
 }

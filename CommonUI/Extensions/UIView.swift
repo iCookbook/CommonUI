@@ -8,6 +8,7 @@
 import UIKit
 
 extension UIView {
+    /// UIView's identifier for cells.
     public static var identifier: String {
         return String(describing: self)
     }

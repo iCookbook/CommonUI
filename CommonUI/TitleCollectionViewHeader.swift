@@ -8,6 +8,7 @@
 import UIKit
 import Resources
 
+#warning("Этот класс нигде не используется")
 public final class TitleCollectionViewHeader: UICollectionReusableView {
     
     // MARK: - Private Properties

@@ -19,6 +19,22 @@ public final class TitleTableViewHeader: UITableViewHeaderFooterView {
         return label
     }()
     
+    private let additionalButton: UIButton = {
+        let button = UIButton()
+        button.isHidden = true
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    private lazy var mainStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [titleLabel, additionalButton])
+        stackView.axis = .horizontal
+        stackView.distribution = .fill
+//        stackView.alignment = .lastBaseline
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+    
     // MARK: - Init
     
     public override init(reuseIdentifier: String?) {
@@ -33,20 +49,26 @@ public final class TitleTableViewHeader: UITableViewHeaderFooterView {
     
     // MARK: - Public Methods
     
-    public func configure(title: String) {
+    public func configure(title: String, buttonTitle: String? = nil) {
         titleLabel.text = title
+        
+        if let buttonTitle = buttonTitle {
+            additionalButton.setTitle(buttonTitle, for: .normal)
+            additionalButton.isHidden = false
+        }
     }
     
     // MARK: - Private Methods
     
     private func setupView() {
         contentView.backgroundColor = Colors.systemBackground
-        contentView.addSubview(titleLabel)
+        contentView.addSubview(mainStackView)
         
         NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: contentView.layoutMargins.left * 2),
-            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: contentView.layoutMargins.right * 2),
-            titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -contentView.layoutMargins.bottom)
+            mainStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: contentView.layoutMargins.left * 2),
+            mainStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -contentView.layoutMargins.right * 2),
+            mainStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: contentView.layoutMargins.top),
+            mainStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -contentView.layoutMargins.bottom),
         ])
     }
 }

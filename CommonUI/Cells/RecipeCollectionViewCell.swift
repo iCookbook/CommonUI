@@ -68,7 +68,7 @@ public final class RecipeCollectionViewCell: DiscoverCollectionViewCell {
     // MARK: - Public Methods
     
     public func configure(with data: Recipe) {
-        recipeImageView.loadImage(for: data.images?.regular?.url)
+        recipeImageView.image = UIImage(data: data.imageData ?? Data())
         recipeTitleLabel.text = data.label
         recipeTitleLabel.textColor = .white
         recipeSubtitleLabel.text = data.source

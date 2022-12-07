@@ -8,7 +8,7 @@
 import UIKit
 import Resources
 
-final class AlertController: UIViewController {
+public final class AlertController: UIViewController {
     
     // MARK: - Public Properties
     
@@ -70,7 +70,7 @@ final class AlertController: UIViewController {
     
     // MARK: - Init
     
-    init(title: String, message: String) {
+    public init(title: String, message: String) {
         heading = title
         self.message = message
         super.init(nibName: nil, bundle: nil)
@@ -82,7 +82,7 @@ final class AlertController: UIViewController {
     
     // MARK: - Life Cycle
     
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         
         setupView()
@@ -111,9 +111,9 @@ final class AlertController: UIViewController {
         
         NSLayoutConstraint.activate([
             containterView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.45),
-            containterView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor, constant: view.layoutMargins.left),
-            containterView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor, constant: -view.layoutMargins.right),
-            containterView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: view.layoutMargins.bottom),
+            containterView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor, constant: view.layoutMargins.left / 2),
+            containterView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor, constant: -view.layoutMargins.right / 2),
+            containterView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: view.layoutMargins.bottom / 2),
             
             imageBackgroundView.centerXAnchor.constraint(equalTo: containterView.centerXAnchor),
             

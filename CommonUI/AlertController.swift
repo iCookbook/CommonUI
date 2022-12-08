@@ -14,13 +14,14 @@ public final class AlertController: UIViewController {
     
     public var heading: String
     public var message: String
+    public var image: UIImage?
     
     // MARK: - Private Properties
     
     private let containterView: UIView = {
         let view = UIView()
         view.backgroundColor = Colors.systemBackground
-        view.layer.cornerRadius = 12
+        view.layer.cornerRadius = 28
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -28,7 +29,7 @@ public final class AlertController: UIViewController {
     private let imageBackgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = Colors.systemGroupedBackground
-        view.layer.cornerRadius = 18
+        view.layer.cornerRadius = 28
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -58,11 +59,12 @@ public final class AlertController: UIViewController {
     }()
     
     private lazy var closeButton: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .system)
         button.setTitle(Texts.Errors.close, for: .normal)
         button.titleLabel?.font = Fonts.buttonTitle()
         button.backgroundColor = Colors.systemGroupedBackground
         button.layer.cornerRadius = 12
+        button.tintColor = Colors.label
         button.addTarget(self, action: #selector(handleCloseButtonTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -70,9 +72,10 @@ public final class AlertController: UIViewController {
     
     // MARK: - Init
     
-    public init(title: String, message: String) {
+    public init(title: String, message: String, image: UIImage?) {
         heading = title
         self.message = message
+        self.image = image
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -88,9 +91,21 @@ public final class AlertController: UIViewController {
         setupView()
     }
     
-    // MARK: - Public Methods
+    public override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        UIView.animate(withDuration: 0.4, delay: 0.0, options: [.curveEaseInOut, .transitionCrossDissolve]) {
+            self.view.backgroundColor = Colors.dimmedBackground
+        }
+    }
     
-//    public func setData(title: String, message: String)
+    public override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        UIView.animate(withDuration: 0.2, delay: 0.0, options: [.transitionCrossDissolve]) {
+            self.view.backgroundColor = .clear
+        }
+    }
     
     // MARK: - Private Methods
     
@@ -99,24 +114,51 @@ public final class AlertController: UIViewController {
     }
     
     private func setupView() {
-        view.backgroundColor = Colors.dimmedBackground
-        
         view.addSubview(containterView)
-        containterView.addSubview(imageBackgroundView)
-        imageBackgroundView.addSubview(iconImageView)
+        
+        if let image = image {
+            containterView.addSubview(imageBackgroundView)
+            imageBackgroundView.addSubview(iconImageView)
+            iconImageView.image = image
+            
+            NSLayoutConstraint.activate([
+                imageBackgroundView.centerXAnchor.constraint(equalTo: containterView.centerXAnchor),
+                imageBackgroundView.topAnchor.constraint(equalTo: containterView.topAnchor, constant: view.frame.size.height * 0.05),
+                imageBackgroundView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.142),
+                imageBackgroundView.widthAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.142),
+                
+                iconImageView.centerXAnchor.constraint(equalTo: imageBackgroundView.centerXAnchor),
+                iconImageView.centerYAnchor.constraint(equalTo: imageBackgroundView.centerYAnchor),
+                iconImageView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.09),
+                iconImageView.widthAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.09),
+            ])
+            print(view.frame.size.height)
+        }
         
         containterView.addSubview(titleLabel)
+        titleLabel.text = heading
         containterView.addSubview(subtitleLabel)
+        subtitleLabel.text = message
         containterView.addSubview(closeButton)
         
         NSLayoutConstraint.activate([
-            containterView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.45),
-            containterView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor, constant: view.layoutMargins.left / 2),
-            containterView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor, constant: -view.layoutMargins.right / 2),
-            containterView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: view.layoutMargins.bottom / 2),
+            containterView.heightAnchor.constraint(equalTo: view.widthAnchor, constant: -view.frame.size.height * 0.02),
+            containterView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 8),
+            containterView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -8),
+            containterView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             
-            imageBackgroundView.centerXAnchor.constraint(equalTo: containterView.centerXAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: containterView.leadingAnchor, constant: view.frame.size.height * 0.03),
+            titleLabel.trailingAnchor.constraint(equalTo: containterView.trailingAnchor, constant: -view.frame.size.height * 0.03),
+            titleLabel.bottomAnchor.constraint(equalTo: subtitleLabel.topAnchor, constant: -view.frame.size.height * 0.03 + 4),
             
+            subtitleLabel.leadingAnchor.constraint(equalTo: containterView.leadingAnchor, constant: view.frame.size.height * 0.03),
+            subtitleLabel.trailingAnchor.constraint(equalTo: containterView.trailingAnchor, constant: -view.frame.size.height * 0.03),
+            subtitleLabel.bottomAnchor.constraint(equalTo: closeButton.topAnchor, constant: -view.frame.size.height * 0.03 - 4),
+            
+            closeButton.leadingAnchor.constraint(equalTo: containterView.leadingAnchor, constant: view.frame.size.height * 0.03),
+            closeButton.trailingAnchor.constraint(equalTo: containterView.trailingAnchor, constant: -view.frame.size.height * 0.03),
+            closeButton.bottomAnchor.constraint(equalTo: containterView.bottomAnchor, constant: -view.frame.size.height * 0.03),
+            closeButton.heightAnchor.constraint(equalToConstant: 48)
         ])
     }
 }

@@ -132,7 +132,6 @@ public final class AlertController: UIViewController {
                 iconImageView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.09),
                 iconImageView.widthAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.09),
             ])
-            print(view.frame.size.height)
         }
         
         containterView.addSubview(titleLabel)

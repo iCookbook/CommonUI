@@ -85,11 +85,7 @@ public final class LargeRecipeCollectionViewCell: DiscoverCollectionViewCell {
     // MARK: - Public Methods
     
     public func configure(with data: Recipe, dishOfTheDayLabelIsHidden: Bool) {
-        if let imageData = data.imageData {
-            recipeImageView.image = UIImage(data: imageData)
-        } else {
-            recipeImageView.image = Resources.Images.sampleRecipeImage
-        }
+        recipeImageView.setImage(by: data.imageData)
         dishOfTheDayLabel.text = Texts.Discover.dishOfTheDay
         dishOfTheDayLabel.isHidden = dishOfTheDayLabelIsHidden
         

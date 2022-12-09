@@ -18,10 +18,33 @@ public final class AlertController: UIViewController {
     
     // MARK: - Private Properties
     
-    private let containterView: UIView = {
+    private lazy var upperView: UIView = {
         let view = UIView()
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissThisVC))
+        view.addGestureRecognizer(tap)
+        
+        view.layer.cornerRadius = 28
+        view.layer.masksToBounds = true
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private lazy var containterView: UIView = {
+        let view = UIView()
+        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(dismissThisVC))
+        swipeDown.direction = .down
+        view.addGestureRecognizer(swipeDown)
+        
         view.backgroundColor = Colors.systemBackground
         view.layer.cornerRadius = 28
+        view.layer.masksToBounds = true
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private let imageContainterView: UIView = {
+        let view = UIView()
+        view.backgroundColor = Colors.systemBackground
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -44,6 +67,7 @@ public final class AlertController: UIViewController {
         let label = UILabel()
         label.font = Fonts.errorTitle()
         label.textAlignment = .center
+        label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -53,7 +77,7 @@ public final class AlertController: UIViewController {
         label.font = Fonts.subtitle()
         label.textColor = Colors.secondaryLabel
         label.textAlignment = .center
-        label.numberOfLines = 2
+        label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -65,7 +89,7 @@ public final class AlertController: UIViewController {
         button.backgroundColor = Colors.systemGroupedBackground
         button.layer.cornerRadius = 12
         button.tintColor = Colors.label
-        button.addTarget(self, action: #selector(handleCloseButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(dismissThisVC), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -109,21 +133,35 @@ public final class AlertController: UIViewController {
     
     // MARK: - Private Methods
     
-    @objc private func handleCloseButtonTapped() {
+    @objc private func dismissThisVC() {
         dismiss(animated: true)
     }
     
     private func setupView() {
+        view.addSubview(upperView)
         view.addSubview(containterView)
+        containterView.addSubview(titleLabel)
+        titleLabel.text = heading
+        containterView.addSubview(subtitleLabel)
+        subtitleLabel.text = message
+        containterView.addSubview(closeButton)
         
         if let image = image {
-            containterView.addSubview(imageBackgroundView)
+            containterView.addSubview(imageContainterView)
+            imageContainterView.addSubview(imageBackgroundView)
             imageBackgroundView.addSubview(iconImageView)
             iconImageView.image = image
             
             NSLayoutConstraint.activate([
-                imageBackgroundView.centerXAnchor.constraint(equalTo: containterView.centerXAnchor),
-                imageBackgroundView.topAnchor.constraint(equalTo: containterView.topAnchor, constant: view.frame.size.height * 0.05),
+                containterView.heightAnchor.constraint(equalTo: view.widthAnchor, constant: -view.frame.size.height * 0.02),
+                
+                imageContainterView.topAnchor.constraint(equalTo: containterView.topAnchor),
+                imageContainterView.bottomAnchor.constraint(equalTo: titleLabel.topAnchor),
+                imageContainterView.leadingAnchor.constraint(equalTo: containterView.leadingAnchor),
+                imageContainterView.trailingAnchor.constraint(equalTo: containterView.trailingAnchor),
+                
+                imageBackgroundView.centerXAnchor.constraint(equalTo: imageContainterView.centerXAnchor),
+                imageBackgroundView.centerYAnchor.constraint(equalTo: imageContainterView.centerYAnchor, constant: 8),
                 imageBackgroundView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.142),
                 imageBackgroundView.widthAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.142),
                 
@@ -132,27 +170,28 @@ public final class AlertController: UIViewController {
                 iconImageView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.09),
                 iconImageView.widthAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.09),
             ])
+        } else {
+            /// Set small height when image was not provided.
+            containterView.heightAnchor.constraint(equalToConstant: view.frame.size.height * 0.3).isActive = true
         }
         
-        containterView.addSubview(titleLabel)
-        titleLabel.text = heading
-        containterView.addSubview(subtitleLabel)
-        subtitleLabel.text = message
-        containterView.addSubview(closeButton)
-        
         NSLayoutConstraint.activate([
-            containterView.heightAnchor.constraint(equalTo: view.widthAnchor, constant: -view.frame.size.height * 0.02),
+            upperView.topAnchor.constraint(equalTo: view.topAnchor),
+            upperView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            upperView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            upperView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
             containterView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 8),
             containterView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -8),
             containterView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             
             titleLabel.leadingAnchor.constraint(equalTo: containterView.leadingAnchor, constant: view.frame.size.height * 0.03),
             titleLabel.trailingAnchor.constraint(equalTo: containterView.trailingAnchor, constant: -view.frame.size.height * 0.03),
-            titleLabel.bottomAnchor.constraint(equalTo: subtitleLabel.topAnchor, constant: -view.frame.size.height * 0.03 + 4),
+            titleLabel.bottomAnchor.constraint(equalTo: subtitleLabel.topAnchor, constant: -view.frame.size.height * 0.03 + 8),
             
             subtitleLabel.leadingAnchor.constraint(equalTo: containterView.leadingAnchor, constant: view.frame.size.height * 0.03),
             subtitleLabel.trailingAnchor.constraint(equalTo: containterView.trailingAnchor, constant: -view.frame.size.height * 0.03),
-            subtitleLabel.bottomAnchor.constraint(equalTo: closeButton.topAnchor, constant: -view.frame.size.height * 0.03 - 4),
+            subtitleLabel.bottomAnchor.constraint(equalTo: closeButton.topAnchor, constant: -view.frame.size.height * 0.03 + 6),
             
             closeButton.leadingAnchor.constraint(equalTo: containterView.leadingAnchor, constant: view.frame.size.height * 0.03),
             closeButton.trailingAnchor.constraint(equalTo: containterView.trailingAnchor, constant: -view.frame.size.height * 0.03),

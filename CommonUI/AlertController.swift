@@ -20,25 +20,27 @@ public final class AlertController: UIViewController {
     
     private lazy var upperView: UIView = {
         let view = UIView()
-        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissThisVC))
-        view.addGestureRecognizer(tap)
-        
         view.layer.cornerRadius = 28
         view.layer.masksToBounds = true
         view.translatesAutoresizingMaskIntoConstraints = false
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissThisVC))
+        view.addGestureRecognizer(tap)
+        
         return view
     }()
     
     private lazy var containterView: UIView = {
         let view = UIView()
-        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(dismissThisVC))
-        swipeDown.direction = .down
-        view.addGestureRecognizer(swipeDown)
-        
         view.backgroundColor = Colors.systemBackground
         view.layer.cornerRadius = 28
         view.layer.masksToBounds = true
         view.translatesAutoresizingMaskIntoConstraints = false
+        
+        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(dismissThisVC))
+        swipeDown.direction = .down
+        view.addGestureRecognizer(swipeDown)
+        
         return view
     }()
     
@@ -59,6 +61,7 @@ public final class AlertController: UIViewController {
     
     public let iconImageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -69,6 +72,7 @@ public final class AlertController: UIViewController {
         label.textAlignment = .center
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.adjustsFontForContentSizeCategory = true
         return label
     }()
     
@@ -79,6 +83,7 @@ public final class AlertController: UIViewController {
         label.textAlignment = .center
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.adjustsFontForContentSizeCategory = true
         return label
     }()
     
@@ -183,7 +188,7 @@ public final class AlertController: UIViewController {
             
             containterView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 8),
             containterView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -8),
-            containterView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            containterView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -8),
             
             titleLabel.leadingAnchor.constraint(equalTo: containterView.leadingAnchor, constant: view.frame.size.height * 0.03),
             titleLabel.trailingAnchor.constraint(equalTo: containterView.trailingAnchor, constant: -view.frame.size.height * 0.03),

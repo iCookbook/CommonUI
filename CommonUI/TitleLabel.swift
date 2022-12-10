@@ -17,6 +17,7 @@ public final class TitleLabel: UILabel {
         self.text = text
         
         font = Fonts.title()
+        adjustsFontForContentSizeCategory = true
         translatesAutoresizingMaskIntoConstraints = false
     }
     

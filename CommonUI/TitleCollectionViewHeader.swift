@@ -18,6 +18,7 @@ public final class TitleCollectionViewHeader: UICollectionReusableView {
         label.text = Texts.Search.recommended
         label.font = Fonts.title()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.adjustsFontForContentSizeCategory = true
         return label
     }()
     

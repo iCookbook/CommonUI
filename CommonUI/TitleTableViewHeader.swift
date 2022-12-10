@@ -16,6 +16,7 @@ public final class TitleTableViewHeader: UITableViewHeaderFooterView {
         let label = UILabel()
         label.font = Fonts.title()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.adjustsFontForContentSizeCategory = true
         return label
     }()
     

@@ -22,6 +22,7 @@ open class DiscoverCollectionViewCell: UICollectionViewCell {
         label.textColor = Colors.transparentTitleLabel
         label.layer.zPosition = 1
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.adjustsFontForContentSizeCategory = true
         return label
     }()
     
@@ -32,6 +33,7 @@ open class DiscoverCollectionViewCell: UICollectionViewCell {
         label.numberOfLines = 2
         label.layer.zPosition = 1
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.adjustsFontForContentSizeCategory = true
         return label
     }()
     

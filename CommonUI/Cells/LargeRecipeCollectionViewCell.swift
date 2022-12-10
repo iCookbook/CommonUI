@@ -29,6 +29,7 @@ public final class LargeRecipeCollectionViewCell: DiscoverCollectionViewCell {
         label.numberOfLines = 2
         label.layer.zPosition = 1
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.adjustsFontForContentSizeCategory = true
         return label
     }()
     

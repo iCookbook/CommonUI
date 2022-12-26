@@ -18,6 +18,7 @@ public final class AlertController: UIViewController {
     
     // MARK: - Private Properties
     
+    /// View that is responsible for dismissing this view controller when it was tapped.
     private lazy var upperView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 28
@@ -30,6 +31,7 @@ public final class AlertController: UIViewController {
         return view
     }()
     
+    /// Containter for alert's content. Dismisses this view controller when user swipes down.
     private lazy var containterView: UIView = {
         let view = UIView()
         view.backgroundColor = Colors.systemBackground
@@ -44,6 +46,7 @@ public final class AlertController: UIViewController {
         return view
     }()
     
+    /// View to center image view of an icon.
     private let imageContainterView: UIView = {
         let view = UIView()
         view.backgroundColor = Colors.systemBackground
@@ -51,6 +54,7 @@ public final class AlertController: UIViewController {
         return view
     }()
     
+    /// Background view for image view of an icon.
     private let imageBackgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = Colors.systemGroupedBackground
@@ -59,6 +63,7 @@ public final class AlertController: UIViewController {
         return view
     }()
     
+    /// Image view of an icon.
     public let iconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit

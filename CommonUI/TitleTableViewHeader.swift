@@ -22,7 +22,8 @@ public final class TitleTableViewHeader: UITableViewHeaderFooterView {
     
     private let additionalButton: UIButton = {
         let button = UIButton()
-        button.isHidden = true
+        button.setTitleColor(Colors.appColor, for: .normal)
+        button.layer.zPosition = 2
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -31,7 +32,7 @@ public final class TitleTableViewHeader: UITableViewHeaderFooterView {
         let stackView = UIStackView(arrangedSubviews: [titleLabel, additionalButton])
         stackView.axis = .horizontal
         stackView.distribution = .fill
-//        stackView.alignment = .lastBaseline
+        stackView.alignment = .lastBaseline
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -50,13 +51,13 @@ public final class TitleTableViewHeader: UITableViewHeaderFooterView {
     
     // MARK: - Public Methods
     
-    public func configure(title: String, buttonTitle: String? = nil) {
+    public func configure(title: String) {
         titleLabel.text = title
-        
-        if let buttonTitle = buttonTitle {
-            additionalButton.setTitle(buttonTitle, for: .normal)
-            additionalButton.isHidden = false
-        }
+    }
+    
+    public func addButton(target: Any, buttonTitle: String, selector: Selector) {
+        additionalButton.setTitle(buttonTitle, for: .normal)
+        additionalButton.addTarget(target, action: selector, for: .touchUpInside)
     }
     
     // MARK: - Private Methods

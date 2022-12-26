@@ -1,6 +1,6 @@
 //
-//  IngredientsTableView.swift
-//  RecipeDetails
+//  TableView.swift
+//  CommonUI
 //
 //  Created by Егор Бадмаев on 07.11.2022.
 //
@@ -11,7 +11,7 @@ import UIKit
 ///
 /// Problem: it is impossible to show `UITableView` inside `UIScrollView` without setting the exact height using `heightAnchor`.
 /// This class solves this problem without setting additional constraint, because we could not know how many rows will be in a table view.
-public final class NonScrollableTableView: UITableView {
+public final class TableView: UITableView {
     
     // MARK: - Init
     

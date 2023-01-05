@@ -10,6 +10,8 @@ import Resources
 
 open class DiscoverCollectionViewCell: UICollectionViewCell {
     
+    // MARK: - Public Properties
+    
     public let recipeImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -49,11 +51,15 @@ open class DiscoverCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Open Methods
+    
     open func setupView() {
         contentView.backgroundColor = Colors.systemGroupedBackground
         contentView.layer.cornerRadius = 12
         contentView.layer.masksToBounds = true
     }
+    
+    // MARK: - Public Methods
     
     public func addShadows(to label: UILabel, opacity: Float) {
         label.layer.shadowColor = UIColor.black.cgColor

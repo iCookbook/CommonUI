@@ -1,0 +1,16 @@
+PODS:
+  - CommonUI (0.1.0)
+
+DEPENDENCIES:
+  - CommonUI (from `../`)
+
+EXTERNAL SOURCES:
+  CommonUI:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  CommonUI: 606236f0bc1e79dc15a383706781ddfe03abfd25
+
+PODFILE CHECKSUM: 68599ae60cb27515eb001852be5d8808eae70900
+
+COCOAPODS: 1.11.3

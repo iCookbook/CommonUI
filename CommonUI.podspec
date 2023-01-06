@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'CommonUI'
-  s.version          = '1.0.2'
+  s.version          = '1.0.3'
   s.summary          = 'Common UI layer.'
   s.homepage         = 'https://github.com/iCookbook/CommonUI'
   s.author           = { 'htmlprogrammist' => '60363270+htmlprogrammist@users.noreply.github.com' }
